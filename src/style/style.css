@@ -161,7 +161,7 @@
   .skills-icons i {
     font-size: 1.5rem;
     color: #fff;
-    transition: transform 0.3s;
+    transition: transform 0.2s;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -223,7 +223,7 @@
   .redes-sociais {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+    gap: 0.7rem;
   }
   
   .box-social {
@@ -232,15 +232,15 @@
     justify-content: center;
     background-color: #000;
     border-radius: 15px;
-    width: 85px;
-    height: 85px;
+    width: 75px;
+    height: 73px;
     text-decoration: none;
-    transition: transform 1s, background-color 0.3s;
+    transition: transform 1s, background-color 0.2s;
     transform: translateX(0) scale(1.1);
   }
   
   .box-social i {
-    font-size: 3rem;
+    font-size: 2rem;
     color: #fff;
   }
   
@@ -269,7 +269,7 @@
     color: #fff;
     padding: 1.3rem;
     border-radius: 8px;
-    transition: background 0.3s;
+    transition: background 0.2s;
   }
   
   .Dis h1 {
