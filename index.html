@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meus links - Gabriel Camillo│Dev</title>
+  <!-- Ícone de atalho -->
+  <link rel="shortcut icon" href="src/img/favicon.png" type="image/x-icon">
+  <!-- CSS principal -->
+  <link rel="stylesheet" href="src/style/style.css?v=1.1">
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <!-- Google Fonts (Roboto) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Div para o efeito Neon Maze via canvas -->
+  <div class="neon-maze-background">
+    <canvas id="mazeCanvas" class="block"></canvas>
+  </div>
+
+  <!-- Tela de Loading (exibida inicialmente) -->
+  <div id="loading-screen" style="opacity: 1; display: flex; align-items: center; justify-content: center; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #000; z-index: 9999;">
+    <div id="loading-text" style="font-size: 2rem;">0%</div>
+  </div>
+
+  <!-- Conteúdo principal -->
+  <div class="container">
+    <div class="content">
+      <!-- Widgets... (seu conteúdo permanece igual) -->
+      <!-- Widget 1: Informações do usuário -->
+      <div class="widget1">
+        <div class="info-user">
+          <div class="img-user">
+            <img src="src/img/user-perfil.png.jpg" alt="user">
+          </div>
+          <div class="name-user">
+            <h1>Gabriel Camillo</h1>
+            <span>Desenvolvedor Full Stack</span>
+          </div>
+        </div>
+        <div class="info-icon">
+          <img src="src/img/tnt.png" alt="icon">
+        </div>
+      </div>
+      <!-- Widget 2: Hard Skills -->
+      <div class="widget2">
+        <div class="hard-skills">
+          <span class="destaque">Hard Skills</span>
+          <div class="skills-icons">
+            <i class="fab fa-java"></i>
+            <i class="fab fa-python"></i>
+            <i class="fab fa-js"></i>
+            <i class="fab fa-react"></i>
+            <i class="fab fa-node"></i>
+            <i class="fab fa-github"></i>
+            <i class="fab fa-database"></i>
+            <i class="fab fa-docker"></i>
+          </div>
+        </div>
+      </div>
+      <!-- Widget 3: Redes Sociais e Twitter -->
+      <div class="social-section">
+        <a href="https://x.com/onlygece" target="_blank" class="tread">
+          <div class="text-tread">
+            <h1>Mais sobre mim</h1>
+            <span>Siga-me no twitter (:</span>
+          </div>
+          <div class="img-tread">
+            <img src="src/img/trong.png" alt="user">
+          </div>
+        </a>
+        <div class="redes-sociais">
+          <a class="box-social tiktok" href="https://www.tiktok.com/@justgece" target="_blank">
+            <i class="fab fa-tiktok"></i>
+          </a>
+          <a class="box-social instagram" href="https://www.instagram.com/justhegece/" target="_blank">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a class="box-social github" href="https://github.com/GabrielCamillo0" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+          <a class="box-social twitch" href="https://www.twitch.tv/justgece_" target="_blank">
+            <i class="fa-brands fa-twitch"></i>
+          </a> 
+        </div>
+      </div>
+      <!-- Widget 4: Link para Youtube -->
+      <div class="widget4">
+        <a href="https://www.youtube.com/@gecethecreator" class="meu-site" target="_blank">
+          <img src="src/img/web-black-icon.png" alt="web">
+          <h1>Meu Youtube</h1>
+        </a>
+      </div>
+      <!-- Widget 5: Portfolio Web Dev -->
+      <div class="widget5">
+        <a href="" class="freelancer" target="_blank">
+          <img src="src/img/web-white-icon.png" alt="web">
+          <h1>Portfolio Web Dev</h1>
+        </a>
+      </div>
+      <!-- Widget 5: Discord -->
+      <div class="Dis">
+        <a href="" class="dis" target="_blank">
+          <img src="src/img/dis.gif" alt="web" class="gif-estilo">
+          <h1>Server Discord</h1>
+        </a>
+      </div>
+      <!-- Widget 6: Embeds do Spotify -->
+      <div class="widget6">
+        <h1>Ando escutando...</h1>
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/212y6CFGgXniniBzf3jAsI?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- Script para o efeito Neon Maze via canvas -->
+  <script>
+    window.addEventListener("load", function() {
+      const canvas = document.getElementById("mazeCanvas");
+      if (!canvas) return;
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return;
+      
+      let t = 0;
+      let animationFrameId;
+      
+      function resizeCanvas() {
+        // O canvas ocupa sempre a viewport
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      
+      function draw() {
+        const s = Math.min(canvas.width, canvas.height) / 15;
+        const g = Math.ceil(canvas.width / s) * 2;
+        const h = Math.ceil(canvas.height / (s * 0.5)) * 2;
+        const w = canvas.width / 2;
+        const v = canvas.height / 2;
+        
+        for (let y = -h; y < h; y++) {
+          for (let i = -g; i < g; i++) {
+            const p = w + ((i - y) * s) / 2;
+            const q = v + ((i + y) * s) / 4;
+            const m = Math.sqrt(i * i + y * y);
+            const n = Math.sqrt(g * g + h * h);
+            const e = 1 - m / n;
+            const f = s * e * Math.abs(Math.sin(m * 0.5 + t));
+  
+            ctx.beginPath();
+            ctx.moveTo(p, q - f);
+            ctx.lineTo(p + s / 2, q - s / 2 - f);
+            ctx.lineTo(p + s, q - f);
+            ctx.lineTo(p + s, q);
+            ctx.lineTo(p + s / 2, q + s / 2);
+            ctx.lineTo(p, q);
+            ctx.closePath();
+  
+            // Gradiente: roxo primário e ciano como cor secundária
+            const gradient = ctx.createLinearGradient(p, q - f, p + s, q);
+            gradient.addColorStop(0, "rgba(156,39,176,0.8)"); // Roxo
+            gradient.addColorStop(1, "rgba(0,255,255,0.8)");    // Ciano
+            ctx.fillStyle = gradient;
+            ctx.fill();
+            ctx.strokeStyle = "rgba(255,255,0,0.5)";
+            ctx.stroke();
+  
+            ctx.beginPath();
+            ctx.moveTo(p, q);
+            ctx.lineTo(p, q - f);
+            ctx.moveTo(p + s, q);
+            ctx.lineTo(p + s, q - f);
+            ctx.moveTo(p + s / 2, q + s / 2);
+            ctx.lineTo(p + s / 2, q - s / 2 - f);
+            ctx.strokeStyle = "rgba(255,255,255,0.3)";
+            ctx.stroke();
+          }
+        }
+      }
+      
+      function animate() {
+        // Use uma opacidade baixa para um rastro mais suave
+        ctx.fillStyle = "rgba(0,0,0,0.01)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        draw();
+        t += 0.009;
+        animationFrameId = requestAnimationFrame(animate);
+      }
+      
+      window.addEventListener("resize", resizeCanvas);
+      resizeCanvas();
+      animate();
+    });
+  </script>
+
+  <!-- Script de animação de loading -->
+  <script src="src/js/animationLoading.js?v=1.0"></script>
+
+</body>
+</html>

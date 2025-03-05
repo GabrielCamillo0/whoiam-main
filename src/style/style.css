@@ -1,0 +1,397 @@
+/* ===== RESET/BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    background: #000;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    line-height: 1.5;
+    position: relative;
+  }
+  
+  /* ===== CONTAINER E CONTENT ===== */
+  .container {
+    display: flex;
+    justify-content: center;
+    margin: 1.5rem auto;
+    max-width: 390px;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+  }
+  
+  /* ===== FUNDO NEON (NEON MAZE) ===== */
+  .neon-maze-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;  /* Cobre toda a largura da viewport */
+    height: 100vh; /* Cobre toda a altura da viewport */
+    z-index: -1;
+    background: linear-gradient(45deg, #00FFFF, #9c27b0);
+    overflow: hidden;
+  }
+  
+  .neon-maze-background::before,
+  .neon-maze-background::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+  
+  .neon-maze-background::before {
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(0, 255, 255, 0.05) 0px,
+      rgba(0, 255, 255, 0.05) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+    animation: moveGrid 10s linear infinite;
+  }
+  
+  .neon-maze-background::after {
+    background: repeating-linear-gradient(
+      90deg,
+      rgba(255, 0, 255, 0.05) 0px,
+      rgba(255, 0, 255, 0.05) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+    animation: moveGrid 15s linear infinite reverse;
+  }
+  
+  @keyframes moveGrid {
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(-3px, -3px);
+    }
+  }
+  
+  /* ===== WIDGET 1: INFO DO USUÁRIO ===== */
+  .widget1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #000;
+    border-radius: 8px;
+    padding: 1rem;
+  }
+  
+  .info-user {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .info-user .img-user img {
+    width: 74px;
+    height: 74px;
+    border-radius: 8px;
+    object-fit: cover;
+    border: 2px solid #69239e;
+  }
+  
+  .name-user {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .name-user h1 {
+    font-size: 1rem;
+    margin-bottom: 0;
+    color: #fff;
+  }
+  
+  .name-user span {
+    font-size: 0.8rem;
+    color: #ccc;
+  }
+  
+  .info-icon img {
+    width: 100px;
+    height: 100px;
+    border-radius: 8px;
+  }
+  
+  /* ===== WIDGET 2: HARD SKILLS ===== */
+  .widget2 {
+    background: #000;
+    border-radius: 8px;
+    padding: 1rem;
+  }
+  
+  .hard-skills {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .hard-skills .destaque {
+    font-weight: bold;
+    font-size: 1rem;
+    color: #692393;
+    align-self: flex-start;
+  }
+  
+  .skills-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+  }
+  
+  .skills-icons i {
+    font-size: 1.5rem;
+    color: #fff;
+    transition: transform 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    text-align: center;
+  }
+  
+  .skills-icons i:hover {
+    transform: scale(1.1);
+    color: #69239e;
+  }
+  
+  /* ===== WIDGET 3: MORE ABOUT ME & SOCIAL NETWORKS ===== */
+  .social-section {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .social-section .tread {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #000;
+    border-radius: 8px;
+    text-decoration: none;
+    padding: 1rem;
+  }
+  
+  .text-tread {
+    text-align: left;
+    margin-bottom: 0.7rem;
+  }
+  
+  .text-tread h1 {
+    font-size: 1rem;
+    color: #fff;
+    margin-bottom: 0.3rem;
+  }
+  
+  .text-tread span {
+    font-size: 0.9rem;
+    color: #ccc;
+  }
+  
+  .img-tread {
+    width: 160px;
+    height: 80px;
+    overflow: hidden;
+    border-radius: 4px;
+  }
+  
+  .img-tread img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .redes-sociais {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  
+  .box-social {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #000;
+    border-radius: 15px;
+    width: 85px;
+    height: 85px;
+    text-decoration: none;
+    transition: transform 1s, background-color 0.3s;
+    transform: translateX(0) scale(1.1);
+  }
+  
+  .box-social i {
+    font-size: 3rem;
+    color: #fff;
+  }
+  
+  .box-social:hover {
+    background-color: #692393;
+    transform: translateX(0.5px) scale(1.2);
+  }
+  
+  /* ===== WIDGET 4, 5 & DISCORD ===== */
+  .widget4,
+  .widget5,
+  .Dis {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .meu-site,
+  .freelancer,
+  .dis {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    width: 200%;
+    text-decoration: none;
+    color: #fff;
+    padding: 1.3rem;
+    border-radius: 8px;
+    transition: background 0.3s;
+  }
+  
+  .Dis h1 {
+    font-size: 1.5rem;
+    color: #69239e;
+  }
+  
+  .widget5 h1 {
+    font-size: 1.5rem;
+    color: #000;
+  }
+  
+  .widget4 h1 {
+    font-size: 1.5rem;
+    color: #000;
+  }
+  
+  .widget4 .meu-site {
+    background: #69239e;
+  }
+  
+  .widget5 .freelancer {
+    background: #10a3a3;
+  }
+  
+  .Dis .dis {
+    background: #000;
+  }
+  
+  .meu-site img,
+  .freelancer img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    margin-right: 8px;
+  }
+  
+  .gif-estilo {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    margin-right: 8px;
+    border: 2px solid #000;
+    border-radius: 8px;
+  }
+  
+  .meu-site:hover {
+    background: #823c9e;
+  }
+  
+  .freelancer:hover {
+    background: #61a19f;
+  }
+  
+  .dis:hover {
+    background: #1a1a1a;
+  }
+  
+  /* ===== WIDGET 6: SPOTIFY EMBED ===== */
+  .widget6 {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+  
+  .widget6 h1 {
+    font-size: 2.3rem;
+    color: #000;
+  }
+  
+  .widget6 .spotify-playlist {
+    background-color: #1a1a1a;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    color: white;
+  }
+  
+  .widget6 .spotify-playlist .album-art {
+    width: 64px;
+    height: 64px;
+    border-radius: 4px;
+    margin-right: 1rem;
+  }
+  
+  .widget6 .spotify-playlist .playlist-info {
+    flex-grow: 1;
+  }
+  
+  .widget6 .spotify-playlist .playlist-title {
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+  }
+  
+  .widget6 .spotify-playlist .playlist-artist {
+    font-size: 0.7rem;
+    color: #888;
+  }
+  
+  .widget6 .spotify-playlist .track-list {
+    font-size: 0.8rem;
+  }
+  
+  .widget6 .spotify-playlist .controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .widget6 .spotify-playlist .spotify-icon {
+    color: #1DB954;
+  }
+  
+  /* ===== RESPONSIVENESS ===== */
+  /* Aqui o fundo e os elementos continuam expandindo com 100vw/100vh,
+     sem alteração na ordem dos elementos */
+  @media (max-width: 480px) {
+    .container {
+      margin: 1rem;
+      max-width: 100%;
+    }
+  }
+  
