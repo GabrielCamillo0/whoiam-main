@@ -578,6 +578,8 @@
   .link-card--instagram:hover { border-color: rgba(225, 48, 108, 0.4); }
   .link-card--saas { border-color: rgba(59, 130, 246, 0.25); }
   .link-card--saas:hover { border-color: rgba(59, 130, 246, 0.45); }
+  .link-card--ai-secretary { border-color: rgba(168, 85, 247, 0.25); }
+  .link-card--ai-secretary:hover { border-color: rgba(6, 182, 212, 0.45); }
   .link-card--beatstars { border-color: rgba(31, 199, 131, 0.25); }
   .link-card--beatstars:hover { border-color: rgba(31, 199, 131, 0.45); }
   
